@@ -10,4 +10,7 @@
     <string name="menu_import">Import</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="main_text">0</string>
+    <string name="title_activity_search_recipe">SearchRecipe</string>
 </resources>
