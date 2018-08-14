@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_centerVertical="true"
+  android:id="@+id/selectedIngredients">
+
+  <TextView
+    android:id="@+id/selectedIngredientTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:textSize="18sp"
+    tools:text="Title" />
+
+  <TextView
+    android:id="@+id/selectedIngredientQuantity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_toStartOf="@id/selectedIngredientMeasure"
+    android:textSize="18sp"
+    tools:text="Quantity" />
+
+  <TextView
+    android:id="@+id/selectedIngredientMeasure"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_toStartOf="@id/delete_item"
+    android:textSize="18sp"
+    tools:text="Measure" />
+
+  <TextView
+    android:id="@+id/delete_item"
+    android:drawableStart="@drawable/ic_close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_alignParentEnd="true"
+    android:layout_margin="3dp"
+    android:padding="3dp" />
+
+</RelativeLayout>

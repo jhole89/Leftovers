@@ -1,9 +1,11 @@
 package com.jhole89.leftovers
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -12,6 +14,8 @@ import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -19,6 +23,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        launchSearchIngredient.setOnClickListener {
+            view -> launchSearchIngredientActivity(view, this)
+        }
+
+        launchSearchRecipe.setOnClickListener{
+            view -> launchSearchRecipeActivity(view, this)
+        }
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -90,8 +102,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun launchSearchRecipesActivity(view: View) {
-        val launcherIntent = Intent(this, SearchRecipe::class.java)
-        startActivity(launcherIntent)
+    companion object {
+        fun launchSearchIngredientActivity(view: View, context: Context){
+            val launcherIntent = Intent(context, SearchIngredientActivity::class.java)
+            startActivity(context, launcherIntent, null)
+        }
+
+        fun launchSearchRecipeActivity(view: View, context: Context) {
+            val launcherIntent = Intent(context, SearchRecipeActivity::class.java)
+            startActivity(context, launcherIntent, null)
+        }
     }
 }

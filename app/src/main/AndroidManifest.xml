@@ -20,9 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchRecipe"
-            android:label="@string/title_activity_search_recipe"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".SearchIngredientActivity"
+            android:label="@string/main_activity_search_ingredient_intent"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchRecipeActivity"
+            android:label="@string/main_activity_search_recipe_intent"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
