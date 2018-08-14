@@ -11,9 +11,9 @@
   <string name="menu_share">Share</string>
   <string name="menu_send">Send</string>
 
-  <string name="main_activity_search_ingredient_label">Ingredient Smart Search</string>
+  <string name="main_activity_search_ingredient_label">Smart Search</string>
   <string name="main_activity_search_ingredient_intent">SearchIngredientActivity</string>
-  <string name="main_activity_search_recipe_label">Browse Recipe</string>
+  <string name="main_activity_search_recipe_label">Browse Recipe\'s</string>
   <string name="main_activity_search_recipe_intent">SearchRecipeActivity</string>
 
   <string name="ingredient_activity_search_ingredient_button">Add Ingredient</string>

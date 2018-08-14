@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/tableLayout1"
   android:layout_width="fill_parent"
-  android:layout_height="wrap_content"
+  android:layout_height="fill_parent"
   android:orientation="horizontal"
   android:weightSum="2"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -14,7 +14,7 @@
   <Button
     android:id="@+id/launchSearchIngredient"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/main_activity_button_height"
     android:layout_weight="1"
     android:text="@string/main_activity_search_ingredient_label"
     android:textAlignment="center"
@@ -23,7 +23,7 @@
   <Button
     android:id="@+id/launchSearchRecipe"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/main_activity_button_height"
     android:layout_weight="1"
     android:text="@string/main_activity_search_recipe_label"
     android:textAlignment="center"
