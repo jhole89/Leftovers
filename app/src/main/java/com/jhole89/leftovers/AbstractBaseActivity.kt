@@ -11,7 +11,7 @@ import com.jhole89.leftovers.recipe.SearchRecipeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-open class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+abstract class AbstractBaseActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -69,12 +69,12 @@ open class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationItemSel
         return true
     }
 
-    fun launchSearchRecipeActivity() {
+    protected fun launchSearchRecipeActivity() {
         val launcherIntent = Intent(this, SearchRecipeActivity::class.java)
         startActivity(launcherIntent)
     }
 
-    fun launchSearchIngredientActivity(){
+    protected fun launchSearchIngredientActivity(){
         val launcherIntent = Intent(this, SearchIngredientActivity::class.java)
         startActivity(launcherIntent)
     }

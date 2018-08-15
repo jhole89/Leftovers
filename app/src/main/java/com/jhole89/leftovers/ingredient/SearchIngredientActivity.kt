@@ -2,14 +2,14 @@ package com.jhole89.leftovers.ingredient
 
 import android.os.Bundle
 import android.widget.ListView
-import com.jhole89.leftovers.BaseActivity
+import com.jhole89.leftovers.AbstractBaseActivity
 import com.jhole89.leftovers.R
 import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat
 import ir.mirrajabi.searchdialog.core.SearchResultListener
 import kotlinx.android.synthetic.main.activity_search_ingredient.*
 import kotlinx.android.synthetic.main.content_search_ingredient.*
 
-class SearchIngredientActivity : BaseActivity() {
+class SearchIngredientActivity : AbstractBaseActivity() {
 
     private lateinit var selectedIngredientList: ListView
 

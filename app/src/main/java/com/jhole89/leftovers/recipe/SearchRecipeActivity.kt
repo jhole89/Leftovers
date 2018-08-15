@@ -3,11 +3,11 @@ package com.jhole89.leftovers.recipe
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.widget.ListView
-import com.jhole89.leftovers.BaseActivity
+import com.jhole89.leftovers.AbstractBaseActivity
 import com.jhole89.leftovers.R
 import kotlinx.android.synthetic.main.activity_search_recipe.*
 
-class SearchRecipeActivity : BaseActivity() {
+class SearchRecipeActivity : AbstractBaseActivity() {
 
     private lateinit var recipeListView: ListView
 
