@@ -8,10 +8,11 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.jhole89.leftovers.R
+import com.squareup.picasso.Picasso
 
 
 class RecipeListAdapter(
-        context: Context,
+        private val context: Context,
         private val recipeList: ArrayList<Recipe>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -60,7 +61,7 @@ class RecipeListAdapter(
         subtitleTextView.text = recipe.description
         detailTextView.text = recipe.label
 
-//        Picasso.with(context).load(recipe.imageUrl).placeholder(R.mipmap.ic_launcher).into(thumbnailImageView)
+        Picasso.with(context).load(recipe.imageUrl).placeholder(R.mipmap.ic_launcher).into(thumbnailImageView)
 
         return view
     }
