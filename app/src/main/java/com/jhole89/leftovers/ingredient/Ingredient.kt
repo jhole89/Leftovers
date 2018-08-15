@@ -1,4 +1,4 @@
-package com.jhole89.leftovers
+package com.jhole89.leftovers.ingredient
 
 import ir.mirrajabi.searchdialog.core.Searchable
 

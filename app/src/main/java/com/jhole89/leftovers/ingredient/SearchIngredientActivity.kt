@@ -1,14 +1,15 @@
-package com.jhole89.leftovers
+package com.jhole89.leftovers.ingredient
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.ListView
+import com.jhole89.leftovers.BaseActivity
+import com.jhole89.leftovers.R
 import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat
 import ir.mirrajabi.searchdialog.core.SearchResultListener
 import kotlinx.android.synthetic.main.activity_search_ingredient.*
 import kotlinx.android.synthetic.main.content_search_ingredient.*
 
-class SearchIngredientActivity : AppCompatActivity() {
+class SearchIngredientActivity : BaseActivity() {
 
     private lateinit var selectedIngredientList: ListView
 
@@ -41,10 +42,7 @@ class SearchIngredientActivity : AppCompatActivity() {
             ).show()
         }
 
-        searchRecipe.setOnClickListener{
-            view -> MainActivity.launchSearchRecipeActivity(view, this)
-        }
-
+        searchRecipe.setOnClickListener{ _ -> launchSearchRecipeActivity() }
     }
 
     private fun initIngredients(): ArrayList<Ingredient> {
