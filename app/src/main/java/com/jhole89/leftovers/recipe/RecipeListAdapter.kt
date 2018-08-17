@@ -12,11 +12,11 @@ import com.squareup.picasso.Picasso
 
 
 class RecipeListAdapter(
-        private val context: Context,
+        private val context: Context?,
         private val recipeList: ArrayList<Recipe>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
         return recipeList.size

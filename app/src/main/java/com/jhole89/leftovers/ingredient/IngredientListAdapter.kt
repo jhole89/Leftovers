@@ -9,11 +9,11 @@ import android.widget.TextView
 import com.jhole89.leftovers.R
 
 class IngredientListAdapter(
-        context: Context,
+        context: Context?,
         private val ingredientList: ArrayList<Ingredient>) : BaseAdapter(){
 
     private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
         return ingredientList.size

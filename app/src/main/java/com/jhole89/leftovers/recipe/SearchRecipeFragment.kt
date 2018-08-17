@@ -1,32 +1,34 @@
 package com.jhole89.leftovers.recipe
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ListView
-import com.jhole89.leftovers.AbstractBaseActivity
 import com.jhole89.leftovers.R
-import kotlinx.android.synthetic.main.activity_search_recipe.*
+import kotlinx.android.synthetic.main.fragment_search_recipe.view.*
 
-class SearchRecipeActivity : AbstractBaseActivity() {
+class SearchRecipeFragment : Fragment() {
 
     private lateinit var recipeListView: ListView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_recipe)
-        setSupportActionBar(toolbar)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
 
-        recipeListView = findViewById(R.id.recipe_list_view)
+        val searchIngredientInflater = inflater.inflate(
+                        R.layout.fragment_search_recipe, container, false
+        )
+
+        recipeListView = searchIngredientInflater.recipe_list_view
 
         val recipeList = initRecipes()
 
-        val adapter = RecipeListAdapter(this, recipeList)
+        val adapter = RecipeListAdapter(context, recipeList)
         recipeListView.adapter = adapter
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        return searchIngredientInflater
     }
 
     private fun initRecipes(): ArrayList<Recipe> {
@@ -51,7 +53,6 @@ class SearchRecipeActivity : AbstractBaseActivity() {
                         "Balanced"
                 )
         )
-
         return items
     }
 }

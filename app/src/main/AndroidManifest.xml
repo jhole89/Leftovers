@@ -18,14 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ingredient.SearchIngredientActivity"
-            android:label="@string/main_activity_search_ingredient_intent"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".recipe.SearchRecipeActivity"
-            android:label="@string/main_activity_search_recipe_intent"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
