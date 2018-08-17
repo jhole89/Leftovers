@@ -2,6 +2,7 @@ package com.jhole89.leftovers
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        nav_view.setNavigationItemSelectedListener(this)
 
         val toggle = ActionBarDrawerToggle(
                 this,
@@ -31,13 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
-
-        supportFragmentManager
-                .beginTransaction()
-                .add(R.id.frame_layout_main, HomeFragment())
-                .addToBackStack(null)
-                .commit()
+        replaceMainFragment(HomeFragment())
     }
 
     override fun onBackPressed() {
@@ -65,25 +61,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
 
             R.id.nav_home ->
-                supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.frame_layout_main, HomeFragment())
-                        .addToBackStack(null)
-                        .commit()
+                replaceMainFragment(HomeFragment())
 
             R.id.nav_ingredients ->
-                supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.frame_layout_main, SearchIngredientFragment())
-                        .addToBackStack(null)
-                        .commit()
+                replaceMainFragment(SearchIngredientFragment())
 
             R.id.nav_recipes ->
-                supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.frame_layout_main, SearchRecipeFragment())
-                        .addToBackStack(null)
-                        .commit()
+                replaceMainFragment(SearchRecipeFragment())
 
             R.id.nav_camera -> { }
             R.id.nav_gallery -> { }
@@ -95,5 +79,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun replaceMainFragment(fragment: Fragment) {
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_layout_main, fragment)
+                .addToBackStack(null)
+                .commit()
     }
 }
