@@ -17,18 +17,18 @@ class SearchRecipeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        val searchIngredientInflater = inflater.inflate(
+        val searchRecipeInflater = inflater.inflate(
                         R.layout.fragment_search_recipe, container, false
         )
 
-        recipeListView = searchIngredientInflater.recipe_list_view
+        recipeListView = searchRecipeInflater.recipe_list_view
 
         val recipeList = initRecipes()
 
         val adapter = RecipeListAdapter(context, recipeList)
         recipeListView.adapter = adapter
 
-        return searchIngredientInflater
+        return searchRecipeInflater
     }
 
     private fun initRecipes(): ArrayList<Recipe> {
