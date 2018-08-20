@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:windowBackground"
-    tools:context=".home.HomeFragment">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="?android:windowBackground"
+  android:weightSum="2"
+  tools:context=".home.HomeFragment">
 
   <Button
-      android:id="@+id/launchSearchIngredient"
-      android:layout_width="0dp"
-      android:layout_height="@dimen/main_activity_button_height"
-      android:layout_weight="1"
-      android:text="@string/main_activity_search_ingredient_label"
-      android:textAlignment="center"
-      android:textColor="@color/colorPrimaryText" />
+    android:id="@+id/launchSearchIngredient"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/main_activity_button_height"
+    android:layout_weight="1"
+    android:text="@string/main_activity_search_ingredient_label"
+    android:textAlignment="center"
+    android:textColor="@color/colorPrimaryText" />
 
   <Button
-      android:id="@+id/launchSearchRecipe"
-      android:layout_width="0dp"
-      android:layout_height="@dimen/main_activity_button_height"
-      android:layout_weight="1"
-      android:text="@string/main_activity_search_recipe_label"
-      android:textAlignment="center"
-      android:textColor="@color/colorPrimaryText" />
+    android:id="@+id/launchSearchRecipe"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/main_activity_button_height"
+    android:layout_weight="1"
+    android:text="@string/main_activity_search_recipe_label"
+    android:textAlignment="center"
+    android:textColor="@color/colorPrimaryText" />
 
 </LinearLayout>

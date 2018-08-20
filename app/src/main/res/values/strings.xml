@@ -16,13 +16,11 @@
   <string name="menu_send">Send</string>
 
   <string name="main_activity_search_ingredient_label">Smart Search</string>
-  <string name="main_activity_search_ingredient_intent">SearchIngredientActivity</string>
   <string name="main_activity_search_recipe_label">Browse Recipe\'s</string>
-  <string name="main_activity_search_recipe_intent">SearchRecipeActivity</string>
+  <string name="main_activity_starred_recipe_label">Favourite Recipe\'s</string>
 
   <string name="ingredient_activity_search_ingredient_button">Add Ingredient</string>
   <string name="ingredient_activity_search_recipe_button">Recipe Smart Search</string>
-  <string name="ingredient_activity_search_recipe_intent">SearchRecipeActivity</string>
 
   <string name="recipe_activity_recipe_thumbnail">thumbnail</string>
 </resources>
