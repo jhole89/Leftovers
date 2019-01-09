@@ -41,8 +41,6 @@ class RecipeListAdapter(
             holder = ViewHolder()
             holder.thumbnailImageView = view.findViewById(R.id.recipe_list_thumbnail) as ImageView
             holder.titleTextView = view.findViewById(R.id.recipe_list_title) as TextView
-            holder.subtitleTextView = view.findViewById(R.id.recipe_list_subtitle) as TextView
-            holder.detailTextView = view.findViewById(R.id.recipe_list_detail) as TextView
 
             view.tag = holder
         } else {
@@ -51,25 +49,19 @@ class RecipeListAdapter(
         }
 
         val titleTextView = holder.titleTextView
-        val subtitleTextView = holder.subtitleTextView
-        val detailTextView = holder.detailTextView
         val thumbnailImageView = holder.thumbnailImageView
 
         val recipe = getItem(position) as Recipe
 
         titleTextView.text = recipe.title
-        subtitleTextView.text = recipe.description
-        detailTextView.text = recipe.label
 
-        Picasso.with(context).load(recipe.imageUrl).placeholder(R.mipmap.ic_launcher).into(thumbnailImageView)
+        Picasso.with(context).load(recipe.image).placeholder(R.mipmap.ic_launcher).into(thumbnailImageView)
 
         return view
     }
 
     private class ViewHolder {
         lateinit var titleTextView: TextView
-        lateinit var subtitleTextView: TextView
-        lateinit var detailTextView: TextView
         lateinit var thumbnailImageView: ImageView
     }
 }

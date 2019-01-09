@@ -1,13 +1,23 @@
 package com.jhole89.leftovers.recipe
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.JsonParser
 import com.jhole89.leftovers.R
+import com.jhole89.leftovers.ingredient.Ingredient
 import kotlinx.android.synthetic.main.fragment_search_recipe.view.*
+
 
 class SearchRecipeFragment : Fragment() {
 
@@ -23,7 +33,46 @@ class SearchRecipeFragment : Fragment() {
 
         recipeListView = searchRecipeInflater.recipe_list_view
 
-        val recipeList = initRecipes()
+        val items = ArrayList<Ingredient>()
+        items.add(Ingredient("Salmon"))
+        items.add(Ingredient("Rice"))
+
+        val url = buildSearchUrl(
+                items.joinToString(separator = ",") { it -> it.title.toLowerCase() }
+        )
+
+        val parser = JsonParser()
+        val recipeList = ArrayList<Recipe>()
+        val gson = Gson()
+
+        val listJsonObjReq = object: StringRequest(
+                Request.Method.GET,
+                url,
+                Response.Listener<String> { response ->
+                    println("Response is: $response")
+                    parser.parse(response).asJsonArray.map { recipe ->
+                        recipeList.add(gson.fromJson(recipe, Recipe::class.java))
+                    }
+                },
+                Response.ErrorListener { error ->
+                    println( "ERR: $error") }
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): Map<String, String> {
+                return mapOf(
+                        "Content-Type" to "application/json",
+                        "X-Mashape-Key" to "MashKey",
+                        "X-Mashape-Host" to "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
+                )
+            }
+        }
+
+        val queue = Volley.newRequestQueue(this.context)
+        queue.add(listJsonObjReq)
+
+        while (recipeList.isEmpty()) {
+
+        }
 
         val adapter = RecipeListAdapter(context, recipeList)
         recipeListView.adapter = adapter
@@ -31,28 +80,17 @@ class SearchRecipeFragment : Fragment() {
         return searchRecipeInflater
     }
 
-    private fun initRecipes(): ArrayList<Recipe> {
-        // TODO: replace with API call
+    private fun buildSearchUrl(ingredientString: String): String {
 
-        val items = ArrayList<Recipe>()
-        items.add(
-                Recipe(
-                        "Grilled Deviled Chickens Under a Brick",
-                        "Grilling these chickens under a heavy weight will help them cook quickly and evenly, leaving them crisp and juicy.",
-                        "http://www.edamam.com/web-img/5f5/5f51c89f832d50da84e3c05bef3f66f9.jpg",
-                        "http://www.delish.com/cooking/recipe-ideas/recipes/a11249/grilled-deviled-chickens-under-brick-mslo0510-recipe/",
-                        "Low-Carb"
-                )
-        )
-        items.add(
-                Recipe(
-                        "Stir-Fried Rice with Chinese Sausage",
-                        "While slices of Chinese sausage are good in any stir-fry, my favorite way to use them is in a rice or noodle dish, so the staple soaks ups the fat rendered from the sausage. Used in fried rice, the sausages impart a rich taste to each kernel.",
-                        "https://www.edamam.com/web-img/341/3417c234dadb687c0d3a45345e86bff4.jpg",
-                        "http://www.seriouseats.com/recipes/2011/06/stir-fried-rice-with-chinese-sausage-recipe.html",
-                        "Balanced"
-                )
-        )
-        return items
+        val recipeUri =  Uri.Builder()
+        recipeUri.scheme("https")
+                .authority("spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .appendPath("recipes")
+                .appendPath("findByIngredients")
+                .appendQueryParameter("ingredients", ingredientString)
+                .appendQueryParameter("number", 100.toString())
+                .appendQueryParameter("ranking", 1.toString())
+
+        return recipeUri.build().toString()
     }
 }

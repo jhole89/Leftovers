@@ -1,9 +1,8 @@
 package com.jhole89.leftovers.recipe
 
 
-class Recipe(
+data class Recipe(
+        val id: Int,
         val title: String,
-        val description: String,
-        val imageUrl: String,
-        val instructionUrl: String,
-        val label: String)
+        val image: String
+)
